@@ -1,0 +1,80 @@
+<script type='text/javascript'>
+$(function() {
+  Dashing.widget_base_dimensions = [370, 340]
+  Dashing.numColumns = 5
+});
+</script>
+
+
+<% content_for :title do %>1080p dashboard<% end %>
+
+<div class="gridster" data-grid-width="1824" data-grid-height="984">
+  <ul>
+
+    <li data-row="1" data-col="1" data-sizex="2" data-sizey="1">
+      <div data-view="Image" data-image="/seatshare.svg" style="background-color:#4A63AE;"></div>
+    </li>
+
+    <li data-row="1" data-col="1" data-sizex="1" data-sizey="1"> 
+        <div data-id="ga_visitor_count" data-view="Number" style="background-color:#4A63AE;" data-title="Visitors This Month" data-moreinfo=" Source: Google Analytics"></div>
+        <i class="fa fa-bar-chart icon-background"></i>
+    </li>
+
+    <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
+      <div data-id="ga_goal_signup" data-view="Number" data-title="Signups This Month" style="background-color:#4A63AE;" data-moreinfo="Source: Google Analytics"></div>
+      <i class="fa fa-flag icon-background"></i>
+    </li>
+
+    <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
+      <div data-id="user_count" data-view="Number" style="background-color:#4A63AE;" data-title="Active Users"></div>
+      <i class="fa fa-user icon-background"></i>
+    </li>
+
+    <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
+      <div data-id="group_count" data-view="Number" style="background-color:#4A63AE;" data-title="Active Groups"></div>
+      <i class="fa fa-group icon-background"></i>
+    </li>
+
+    <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
+      <div data-id="total_invites" data-view="Number" style="background-color:#4A63AE;" data-title="Sent Group Invitations" data-moreinfo="Last 30 days"></div>
+      <i class="fa fa-envelope icon-background"></i>
+    </li>
+
+    <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
+      <div data-id="accepted_invites" data-view="Number" style="background-color:#4A63AE;" data-title="Accepted Group Invitations" data-moreinfo="Last 30 days"></div>
+      <i class="fa fa-thumbs-up icon-background"></i>
+    </li>
+
+    <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
+      <div data-id="total_tickets" data-view="Number" style="background-color:#4A63AE;" data-title="Total Tickets"></div>
+      <i class="fa fa-ticket icon-background"></i>
+    </li>
+
+    <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
+      <div data-id="tickets_transferred" data-view="Number" style="background-color:#4A63AE;" data-title="Transferred Tickets" data-moreinfo="Last 30 days"></div>
+      <i class="fa fa-refresh icon-background"></i>
+    </li>
+
+    <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
+      <div data-id="tickets_unused" data-view="Number" style="background-color:#4A63AE;" data-title="Unused Tickets" data-moreinfo="Last 30 days"></div>
+      <i class="fa fa-trash icon-background"></i>
+    </li>
+
+    <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
+      <div data-id="newest_user" data-view="Text" style="background-color:#4A63AE;" data-title="Newest User"></div>
+      <i class="fa fa-user icon-background"></i>
+    </li>
+
+    <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
+      <div data-id="largest_groups" data-view="List" style="background-color:#4A63AE;" data-title="Largest Groups"></div>
+      <i class="fa fa-building icon-background"></i>
+    </li>
+
+    <li data-row="1" data-col="1" data-sizex="2" data-sizey="1">
+      <div data-id="twitter_mentions" data-view="Comments" style="background-color:#4A63AE;" data-moreinfo="Tweets mentioning SeatShare"></div>
+      <i class="fa fa-twitter icon-background"></i>
+    </li>
+
+
+  </ul>
+</div>
