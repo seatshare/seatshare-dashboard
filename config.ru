@@ -1,4 +1,4 @@
-if ENV['RACK_ENV'] != 'production' && File.exists?('.env') 
+if ENV['RACK_ENV'] != 'production'
   require 'dotenv'
   Dotenv.load
 end
