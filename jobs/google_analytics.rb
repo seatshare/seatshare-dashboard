@@ -51,8 +51,6 @@ SCHEDULER.every '20s', :first_in => 0 do
     'metrics' => "ga:goal1Completions",
   })
 
-  puts userSignups.data.rows.inspect
-
   # Update the dashboard
   send_event('ga_visitor_count',  { current: visitorCount.data.rows.count > 0 ? visitorCount.data.rows[0][0] : 0 })
   send_event('ga_goal_signup',   { current: userSignups.data.rows.count > 0 ? userSignups.data.rows[0][0] : 0 })

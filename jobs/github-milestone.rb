@@ -9,7 +9,6 @@ github_project = ENV['GITHUB_PROJECT']
 
 SCHEDULER.every '10m', :first_in => 0 do |job|
     uri = "https://api.github.com/repos/#{github_owner}/#{github_project}/milestones?access_token=#{github_token}"
-    puts "Getting #{uri}"
     response = RestClient.get uri
     milestones = JSON.parse(response.body, symbolize_names: true)
 
