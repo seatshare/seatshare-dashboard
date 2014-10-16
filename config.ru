@@ -1,5 +1,5 @@
-require 'dotenv'
-if File.exists?('.env') 
+if ENV['RACK_ENV'] != 'production' && File.exists?('.env') 
+  require 'dotenv'
   Dotenv.load
 end
 
