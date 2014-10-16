@@ -1,6 +1,7 @@
-if ENV['RACK_ENV'] != 'production'
+begin
   require 'dotenv'
   Dotenv.load
+rescue
 end
 
 require 'sinatra/cyclist'
