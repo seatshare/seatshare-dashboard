@@ -1,4 +1,4 @@
-if File.exists?(".env")
+if !ENV.has_key? 'IS_HEROKU'
   require 'dotenv'
   Dotenv.load
 end
