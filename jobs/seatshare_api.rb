@@ -74,8 +74,8 @@ SCHEDULER.every '15m', :first_in => 0 do |job|
   request = Net::HTTP::Get.new(uri.request_uri)
   response = http.request(request)
 
-  users = JSON.parse(response.body)['data']
-  puts users.inspect
+  users = JSON.parse(response.body)['data'] || []
+
   response = users.map do |row|
     row = {
       :label => "#{row['first_name']} #{row['last_name']}",
@@ -96,7 +96,7 @@ SCHEDULER.every '15m', :first_in => 0 do |job|
   request = Net::HTTP::Get.new(uri.request_uri)
   response = http.request(request)
 
-  groups = JSON.parse(response.body)['data']
+  groups = JSON.parse(response.body)['data'] || []
 
   response = groups.map do |row|
     row = {
