@@ -82,7 +82,7 @@ SCHEDULER.every '15m', :first_in => 0 do |job|
       :value => DateTime.parse(row['created_at']).strftime('%-m/%-d')
     }
   end
-  puts response.inspect
+
   send_event('recent_users', { items: response } )
 
 end
