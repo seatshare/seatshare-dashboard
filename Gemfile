@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 gem 'dashing'
 
 # Environment loading while in development
-gem 'dotenv'
+gem 'dotenv', :groups => [:development, :test]
 
 # Cycle Dashboards
 gem 'sinatra_cyclist'
