@@ -1,7 +1,5 @@
-if !ENV.has_key? 'IS_HEROKU'
-  require 'dotenv'
-  Dotenv.load
-end
+require 'dotenv'
+Dotenv.load
 
 require 'sinatra/cyclist'
 
