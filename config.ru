@@ -1,5 +1,7 @@
 require 'dotenv'
-Dotenv.load
+if File.exists? '.env'
+  Dotenv.load
+end
 
 require 'sinatra/cyclist'
 
