@@ -1,5 +1,5 @@
-require 'dotenv'
 if File.exists? '.env'
+  require 'dotenv'
   Dotenv.load
 end
 
