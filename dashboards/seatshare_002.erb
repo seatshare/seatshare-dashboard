@@ -5,11 +5,14 @@ $(function() {
 });
 </script>
 
-
-<% content_for :title do %>1080p dashboard<% end %>
+<% content_for :title do %>SeatShare Dashboard<% end %>
 
 <div class="gridster" data-grid-width="1824" data-grid-height="984">
   <ul>
+
+    <li data-row="1" data-col="1" data-sizex="5" data-sizey="1">
+      <div data-view="Image" data-image="/seatshare.svg"></div>
+    </li>
 
     <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
       <div data-id="WeeklyReminder" data-view="Mandrill" data-title="Weekly Reminders"></div>
@@ -50,10 +53,6 @@ $(function() {
     <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
       <div data-id="github_next_milesone" data-view="Text" data-title="Next Milestone"></div>
       <i class="fa fa-github icon-background"></i>
-    </li>
-
-    <li data-row="1" data-col="1" data-sizex="5" data-sizey="1">
-      <div data-view="Image" data-image="/seatshare.svg"></div>
     </li>
 
   </ul>

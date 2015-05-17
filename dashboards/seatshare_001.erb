@@ -5,8 +5,7 @@ $(function() {
 });
 </script>
 
-
-<% content_for :title do %>1080p dashboard<% end %>
+<% content_for :title do %>SeatShare Dashboard<% end %>
 
 <div class="gridster" data-grid-width="1824" data-grid-height="984">
   <ul>
@@ -16,22 +15,22 @@ $(function() {
     </li>
 
     <li data-row="1" data-col="1" data-sizex="1" data-sizey="1"> 
-        <div data-id="ga_visitor_count" data-view="Number" data-title="Visitors This Month" data-moreinfo=" Source: Google Analytics"></div>
+        <div data-id="ga_visitor_count" data-view="Number" data-title="Site Visitors" data-moreinfo="Last 30 Days"></div>
         <i class="fa fa-bar-chart icon-background"></i>
     </li>
 
     <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
-      <div data-id="ga_goal_signup" data-view="Number" data-title="Signups This Month" data-moreinfo="Source: Google Analytics"></div>
+      <div data-id="ga_goal_signup" data-view="Number" data-title="New Signups" data-moreinfo="Last 30 Days"></div>
       <i class="fa fa-flag icon-background"></i>
     </li>
 
     <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
-      <div data-id="user_count" data-view="Number" data-title="Active Users"></div>
+      <div data-id="user_count" data-view="Number" data-title="Active Users" data-moreinfo="All Time"></div>
       <i class="fa fa-user icon-background"></i>
     </li>
 
     <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
-      <div data-id="group_count" data-view="Number" data-title="Active Groups"></div>
+      <div data-id="group_count" data-view="Number" data-title="Active Groups" data-moreinfo="All Time"></div>
       <i class="fa fa-group icon-background"></i>
     </li>
 
@@ -46,7 +45,7 @@ $(function() {
     </li>
 
     <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
-      <div data-id="total_tickets" data-view="Number" data-title="Total Tickets"></div>
+      <div data-id="total_tickets" data-view="Number" data-title="Total Tickets" data-moreinfo="All Time"></div>
       <i class="fa fa-ticket icon-background"></i>
     </li>
 
@@ -62,7 +61,7 @@ $(function() {
 
     <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
       <div data-id="recent_users" data-view="List" data-unordered="true" data-title="Recent Users"></div>
-      <i class="fa fa-user icon-background"></i>
+      <i class="fa fa-user-plus icon-background"></i>
     </li>
 
     <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
@@ -74,7 +73,6 @@ $(function() {
       <div data-id="twitter_mentions" data-view="Comments" data-moreinfo="Tweets mentioning SeatShare"></div>
       <i class="fa fa-twitter icon-background"></i>
     </li>
-
 
   </ul>
 </div>

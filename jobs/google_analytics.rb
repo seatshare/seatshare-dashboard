@@ -13,6 +13,7 @@ client = Google::APIClient.new(:application_name => 'Dashing',
 
 # Load your credentials for the service account
 begin
+  OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
   key = OpenSSL::PKey::RSA.new google_private_key, google_private_key_secret
   client.authorization = Signet::OAuth2::Client.new(
     :token_credential_uri => 'https://accounts.google.com/o/oauth2/token',
@@ -34,8 +35,8 @@ SCHEDULER.every '20s', :first_in => 0 do
   analytics = client.discovered_api('analytics','v3')
 
   # Start and end dates
-  startDate = DateTime.now.strftime("%Y-%m-01") # first day of current month
-  endDate = DateTime.now.strftime("%Y-%m-%d")  # now
+  startDate = (DateTime.now - 31).strftime("%Y-%m-%d")
+  endDate = (DateTime.now - 1).strftime("%Y-%m-%d")
 
   # Execute the queries
   visitorCount = client.execute(:api_method => analytics.data.ga.get, :parameters => { 
