@@ -5,7 +5,6 @@ SCHEDULER.every '5m', first_in: 0 do |job|
   campaign_list = mailchimp.campaigns.list
   cid = campaign_list['data'][0]['id']
   response = mailchimp.reports.summary(cid)
-  puts response.inspect
   send_event('mailchimp', {
     uniq_opens:   response['unique_opens'],
     uniq_clicks:  response['unique_clicks'],
