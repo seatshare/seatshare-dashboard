@@ -12,8 +12,8 @@ gem 'dotenv', :groups => [:development, :test]
 gem 'sinatra_cyclist'
 
 # MailChimp / Mandrill
-gem 'erubis'
-gem 'gibbon'
+gem 'mailchimp-api'
+gem 'mandrill-api'
 
 # Google Analytics
 gem 'google-api-client'

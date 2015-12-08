@@ -13,7 +13,6 @@ client = Google::APIClient.new(:application_name => 'Dashing',
 
 # Load your credentials for the service account
 begin
-  OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
   key = OpenSSL::PKey::RSA.new google_private_key, google_private_key_secret
   client.authorization = Signet::OAuth2::Client.new(
     :token_credential_uri => 'https://accounts.google.com/o/oauth2/token',

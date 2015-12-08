@@ -5,19 +5,13 @@ require 'json'
 api_url = ENV['SEATSHARE_ADMIN_API_URL']
 api_key = ENV['SEATSHARE_ADMIN_API_KEY']
 api_ver = 'v1'
-
-puts 'api_url: ' + api_url
-puts 'api_key: ' + api_key
-puts 'api_ver: ' + api_ver
-
 use_ssl = true if api_url.match('https')
 
 # User Count
 SCHEDULER.every '1m', first_in: 0 do
-  uri = URI("#{api_url}/#{api_ver}/user_count?key=#{api_key}")
+  uri = URI("#{api_url}/#{api_ver}/user_count?api_key=#{api_key}")
   http = Net::HTTP.new(uri.host, uri.port)
   http.use_ssl = use_ssl
-  http.verify_mode = OpenSSL::SSL::VERIFY_NONE
   request = Net::HTTP::Get.new(uri.request_uri)
   response = http.request(request)
   count = JSON.parse(response.body)['data']
@@ -26,10 +20,9 @@ SCHEDULER.every '1m', first_in: 0 do
 end
 
 SCHEDULER.every '1m', first_in: 0 do
-  uri = URI("#{api_url}/#{api_ver}/group_count?key=#{api_key}")
+  uri = URI("#{api_url}/#{api_ver}/group_count?api_key=#{api_key}")
   http = Net::HTTP.new(uri.host, uri.port)
   http.use_ssl = use_ssl
-  http.verify_mode = OpenSSL::SSL::VERIFY_NONE
   request = Net::HTTP::Get.new(uri.request_uri)
   response = http.request(request)
   count = JSON.parse(response.body)['data']
@@ -38,10 +31,9 @@ SCHEDULER.every '1m', first_in: 0 do
 end
 
 SCHEDULER.every '1m', first_in: 0 do
-  uri = URI("#{api_url}/#{api_ver}/total_invites?days=30&key=#{api_key}")
+  uri = URI("#{api_url}/#{api_ver}/total_invites?days=30&api_key=#{api_key}")
   http = Net::HTTP.new(uri.host, uri.port)
   http.use_ssl = use_ssl
-  http.verify_mode = OpenSSL::SSL::VERIFY_NONE
   request = Net::HTTP::Get.new(uri.request_uri)
   response = http.request(request)
   count = JSON.parse(response.body)['data']
@@ -50,10 +42,9 @@ SCHEDULER.every '1m', first_in: 0 do
 end
 
 SCHEDULER.every '1m', first_in: 0 do
-  uri = URI("#{api_url}/#{api_ver}/accepted_invites?days=30&key=#{api_key}")
+  uri = URI("#{api_url}/#{api_ver}/accepted_invites?days=30&api_key=#{api_key}")
   http = Net::HTTP.new(uri.host, uri.port)
   http.use_ssl = use_ssl
-  http.verify_mode = OpenSSL::SSL::VERIFY_NONE
   request = Net::HTTP::Get.new(uri.request_uri)
   response = http.request(request)
   count = JSON.parse(response.body)['data']
@@ -62,10 +53,9 @@ SCHEDULER.every '1m', first_in: 0 do
 end
 
 SCHEDULER.every '1m', first_in: 0 do
-  uri = URI("#{api_url}/#{api_ver}/recent_users?key=#{api_key}")
+  uri = URI("#{api_url}/#{api_ver}/recent_users?api_key=#{api_key}")
   http = Net::HTTP.new(uri.host, uri.port)
   http.use_ssl = use_ssl
-  http.verify_mode = OpenSSL::SSL::VERIFY_NONE
   request = Net::HTTP::Get.new(uri.request_uri)
   response = http.request(request)
 
@@ -82,10 +72,9 @@ SCHEDULER.every '1m', first_in: 0 do
 end
 
 SCHEDULER.every '1m', first_in: 0 do
-  uri = URI("#{api_url}/#{api_ver}/recent_groups?key=#{api_key}")
+  uri = URI("#{api_url}/#{api_ver}/recent_groups?api_key=#{api_key}")
   http = Net::HTTP.new(uri.host, uri.port)
   http.use_ssl = use_ssl
-  http.verify_mode = OpenSSL::SSL::VERIFY_NONE
   request = Net::HTTP::Get.new(uri.request_uri)
   response = http.request(request)
 
@@ -102,10 +91,9 @@ SCHEDULER.every '1m', first_in: 0 do
 end
 
 SCHEDULER.every '1m', first_in: 0 do
-  uri = URI("#{api_url}/#{api_ver}/total_tickets?key=#{api_key}")
+  uri = URI("#{api_url}/#{api_ver}/total_tickets?api_key=#{api_key}")
   http = Net::HTTP.new(uri.host, uri.port)
   http.use_ssl = use_ssl
-  http.verify_mode = OpenSSL::SSL::VERIFY_NONE
   request = Net::HTTP::Get.new(uri.request_uri)
   response = http.request(request)
   count = JSON.parse(response.body)['data']
@@ -114,10 +102,9 @@ SCHEDULER.every '1m', first_in: 0 do
 end
 
 SCHEDULER.every '1m', first_in: 0 do
-  uri = URI("#{api_url}/#{api_ver}/tickets_transferred?days=30&key=#{api_key}")
+  uri = URI("#{api_url}/#{api_ver}/tickets_transferred?days=30&api_key=#{api_key}")
   http = Net::HTTP.new(uri.host, uri.port)
   http.use_ssl = use_ssl
-  http.verify_mode = OpenSSL::SSL::VERIFY_NONE
   request = Net::HTTP::Get.new(uri.request_uri)
   response = http.request(request)
   count = JSON.parse(response.body)['data']
@@ -126,10 +113,9 @@ SCHEDULER.every '1m', first_in: 0 do
 end
 
 SCHEDULER.every '1m', first_in: 0 do
-  uri = URI("#{api_url}/#{api_ver}/tickets_unused?days=30&key=#{api_key}")
+  uri = URI("#{api_url}/#{api_ver}/tickets_unused?days=30&api_key=#{api_key}")
   http = Net::HTTP.new(uri.host, uri.port)
   http.use_ssl = use_ssl
-  http.verify_mode = OpenSSL::SSL::VERIFY_NONE
   request = Net::HTTP::Get.new(uri.request_uri)
   response = http.request(request)
   count = JSON.parse(response.body)['data']
