@@ -15,6 +15,9 @@ require 'dashing'
 
 configure do
   set :auth_token, ENV['DASHING_AUTH_TOKEN']
+  set :routes_to_cycle_through, [:seatshare_001, :seatshare_002]
+  set :cycle_duration, 35
+  set :default_dashboard, '_cycle'
 
   helpers do
     def protected!
