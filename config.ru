@@ -25,7 +25,10 @@ configure do
     end
   end
 
-  use Rack::Session::Cookie
+  use Rack::Session::Cookie, key: 'rack.session',
+                             path: '/',
+                             expire_after: 600,
+                             secret: ENV['SESSION_KEY']
   use OmniAuth::Builder do
     provider :github, ENV['GITHUB_KEY'], ENV['GITHUB_SECRET'], scope: 'read:org'
   end
