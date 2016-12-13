@@ -25,10 +25,7 @@ configure do
     end
   end
 
-  use Rack::Session::Cookie, key: 'rack.session',
-                             path: '/',
-                             expire_after: 600,
-                             secret: ENV['SESSION_KEY']
+  use Rack::Session::Cookie
   use OmniAuth::Builder do
     provider :github, ENV['GITHUB_KEY'], ENV['GITHUB_SECRET'], scope: 'read:org'
   end
@@ -41,6 +38,9 @@ configure do
     client = Octokit::Client.new access_token: auth['credentials']['token']
     user_orgs = client.user.rels[:organizations].get.data
 
+    puts 'inspecting ...'
+    puts user_orgs.inspect
+
     if user_orgs.any? { |org| org.id == organization_id }
       session[:user_id] = auth['info']['email']
       redirect '/'
@@ -50,7 +50,7 @@ configure do
   end
 
   get '/auth/failure' do
-    'Either you declined access, or are not a member of the organization.'
+    'Nope.'
   end
 end
 

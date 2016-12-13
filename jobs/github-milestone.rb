@@ -8,37 +8,39 @@ github_owner = ENV['GITHUB_OWNER']
 github_project = ENV['GITHUB_PROJECT']
 
 SCHEDULER.every '10m', :first_in => 0 do |job|
-    uri = "https://api.github.com/repos/#{github_owner}/#{github_project}/milestones?access_token=#{github_token}"
-    response = RestClient.get uri
-    milestones = JSON.parse(response.body, symbolize_names: true)
+  next
 
-    # Remove all the milestones with no due date, or where all the issues are closed.
-    milestones.select! { |milestone| !milestone[:due_on].nil? and (milestone[:open_issues] > 0) }
+  uri = "https://api.github.com/repos/#{github_owner}/#{github_project}/milestones?access_token=#{github_token}"
+  response = RestClient.get uri
+  milestones = JSON.parse(response.body, symbolize_names: true)
 
-    if milestones.length > 0
-        milestones.sort! { |a,b| a[:due_on] <=> b[:due_on] }
+  # Remove all the milestones with no due date, or where all the issues are closed.
+  milestones.select! { |milestone| !milestone[:due_on].nil? and (milestone[:open_issues] > 0) }
 
-        next_milestone = milestones.first
-        days_left = (Date.parse(next_milestone[:due_on]) - Date.today).to_i
-        if days_left > 0
-            due = "Due in #{days_left} days"
-        elsif days_left == 0
-            due = "Due today"
-        else
-            due = "Overdue by #{days_left.abs} days"
-        end
+  if milestones.length > 0
+      milestones.sort! { |a,b| a[:due_on] <=> b[:due_on] }
 
-        send_event('github_next_milesone', {
-            text: "#{next_milestone[:title] or 'Unnamed Milestone'}<br>#{due}",
-            moreinfo: "#{next_milestone[:open_issues]}/#{next_milestone[:open_issues] + next_milestone[:closed_issues]} issues remain"
-        })
+      next_milestone = milestones.first
+      days_left = (Date.parse(next_milestone[:due_on]) - Date.today).to_i
+      if days_left > 0
+          due = "Due in #{days_left} days"
+      elsif days_left == 0
+          due = "Due today"
+      else
+          due = "Overdue by #{days_left.abs} days"
+      end
 
-    else
-        # There are no milestones left with open issues.
-        send_event('github_next_milesone', {
-            text: "None",
-            moreinfo: ""
-        })
+      send_event('github_next_milesone', {
+          text: "#{next_milestone[:title] or 'Unnamed Milestone'}<br>#{due}",
+          moreinfo: "#{next_milestone[:open_issues]}/#{next_milestone[:open_issues] + next_milestone[:closed_issues]} issues remain"
+      })
 
-    end
+  else
+      # There are no milestones left with open issues.
+      send_event('github_next_milesone', {
+          text: "None",
+          moreinfo: ""
+      })
+
+  end
 end # SCHEDULER
