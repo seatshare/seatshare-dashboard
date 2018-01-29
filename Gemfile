@@ -18,7 +18,7 @@ gem 'mailchimp-api'
 gem 'mandrill-api'
 
 # Google Analytics
-gem 'google-api-client'
+gem 'google-api-client', '~> 0.7.1'
 gem 'rest-client'
 
 # Twitter
